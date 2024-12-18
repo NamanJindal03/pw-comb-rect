@@ -11,28 +11,41 @@ const cardHeadings = [
   {heading: 'Explore more b', text: 'c'}
 ]
 
+// let counter2 = 0;
+
 function App() {
+  console.log('will it get rerendered?????? - Part 2')
+
+  console.log(useState('naman'))
+  const [counter, l] = useState(0); //no it wont give an error 
+   //ref -> ref solves the problem of changing value upon rerender 
+
   return (
     <>
+      {console.log('will it get rerendered?????? - Part 3')}
       <h1>My Card Section</h1>
-      {/* {Card('Explore more from Small Businesses')}
-      {Card('Revamp your home in style')}
-      {Card('Appliances for your home | Up to 55% off')}
-      {Card('Starting ₹149 | Headphones')} */}
       {
         cardHeadings.map((cardDetail)=>{
           return <>
-            <Card heading={cardDetail.heading} text={cardDetail.text}/>
+            <Card heading={cardDetail.heading} text={cardDetail.text} count={counter}/>
           </>
         })
       }
+      <div>
+        {counter}
+        <div>
+          {/* <button onClick={()=> {counter= counter -1}}>minus</button> */}
+          <button onClick={()=> {console.log('clicked');l(counter)}}>plus</button>
 
-      {/* <Card heading={cardHeadings[0]} text='a'/>
-      <Card heading={cardHeadings[1]}/>
-      <Card heading={cardHeadings[2]}/>
-      <Card heading={cardHeadings[3]}/>
-      <Card heading={cardHeadings[4]}/>
-      <Card heading={cardHeadings[5]}/> */}
+        </div>
+
+        <h1>COunter 2 section</h1>
+        {/* <div>
+        {counter2}
+          <button onClick={()=> {console.log(counter2); counter2= counter2 -1}}>minus</button>
+          <button onClick={()=> {counter2= counter2 +1}}>plus</button>
+        </div> */}
+      </div>
     </>
   )
 }
